@@ -18,7 +18,3 @@ app.use('/api',post_route);
 app.listen(8000,function(){
     console.log('Server is running');
 });
-
-
-
-

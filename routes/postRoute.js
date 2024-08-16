@@ -32,8 +32,8 @@ const  storage=multer.diskStorage({
 });
 const upload=multer({storage:storage});
 
-post_route.post('/create-post');
+const postController=require('../controllers/postController');
+
+post_route.post('/create-post',upload.single('image'),postController.createPost);
 
 module.exports=post_route;
-
-
