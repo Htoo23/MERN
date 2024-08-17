@@ -36,4 +36,6 @@ const postController=require('../controllers/postController');
 
 post_route.post('/create-post',upload.single('image'),postController.createPost);
 
+post_route.get('/get-posts',postController.getPosts);
+
 module.exports=post_route;

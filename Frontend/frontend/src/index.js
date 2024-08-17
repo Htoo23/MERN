@@ -4,7 +4,7 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import {BrowserRouter, Route,Routes} from 'react-router-dom';
-// import CreateComponent from './components/CreateComponent';
+import ShowComponent from './components/ShowComponent';
 
 export default function Index(){
   return(
@@ -12,6 +12,7 @@ export default function Index(){
     <BrowserRouter basename='/'>
       <Routes>
         <Route path='/' element={<App/>}/>
+        <Route path="/show" element={<ShowComponent/>}/>
       </Routes>
     </BrowserRouter>
 
