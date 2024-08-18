@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import postService from "../services/postService";
+// import { post } from "../../../../routes/postRoute";
 
 function ShowComponent() {
 
@@ -14,7 +15,18 @@ function ShowComponent() {
         fetchPosts();
     }, []);
 
-    console.log(posts.data);
+    const deletePost = async (id, e) => {
+        var response = await postService.deletePost(id);
+        if (response.data.success == true) {
+            alert(response.data.msg);
+            document.getElementById(id).parentElement.parentElement.remove();
+
+        }
+        else {
+            alert(response.data.msg);
+
+        }
+    }
 
 
     return (
@@ -26,13 +38,19 @@ function ShowComponent() {
                         <th>Title</th>
                         <th>Date</th>
                         <th>Image</th>
+                        <th>Delete</th>
                     </thead>
                     <tbody>
                         {posts.data.data.map(posts => (
                             <tr>
                                 <td>{posts.title}</td>
                                 <td>{posts.date}</td>
-                                <td><img src={'http://127.0.0.1:8000/api/postImages/'+posts.image} style={{width:'auto',height:'100px'}}/></td>
+                                <td>
+                                    <img src={'http://127.0.0.1:8000/api/postImages/' + posts.image} style={{ width: 'auto', height: '100px' }} />
+                                </td>
+                                <td>
+                                    <button id={posts._id} onClick={(e) => deletePost(posts._id, e)}>Delete</button>
+                                </td>
                             </tr>
                         )
 

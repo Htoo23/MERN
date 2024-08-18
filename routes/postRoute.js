@@ -38,4 +38,6 @@ post_route.post('/create-post',upload.single('image'),postController.createPost)
 
 post_route.get('/get-posts',postController.getPosts);
 
+post_route.get('/delete-post/:id',postController.deletePost);
+
 module.exports=post_route;
